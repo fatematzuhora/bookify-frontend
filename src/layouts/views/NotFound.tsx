@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 const NotFound: React.FC = () => {
     return (
-        <div></div>
+        <div>
+            Nothing Found!
+        </div>
     )
 }
 

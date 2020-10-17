@@ -2,7 +2,6 @@ import React from 'react';
 import { Layout, Menu } from 'antd';
 
 const SideNav = (props: any) => {
-    const routes = props.routes;
     return (
         <Layout.Sider width={220} className="dashboard_sider">
             <Menu

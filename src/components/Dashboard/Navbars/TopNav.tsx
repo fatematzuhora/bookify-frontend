@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Button, Col, Row } from 'antd';
 import { logOut } from 'store/actions/index';
 import { connect } from 'react-redux';
