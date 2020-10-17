@@ -10,12 +10,80 @@
                 font-weight: 600;
                 color: $color-primary;
             }
-
-            .menu-item {
-                background: $color-gray-1;
-            }
         }
 
+    }
+
+    &_content {
+        &-search {
+            position: relative;
+
+            .search-bg {
+                background-image: url("../img/resort.jpeg");
+                filter: blur(.1rem);
+                -webkit-filter: blur(.1rem);
+                height: 15rem;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+
+                @media only screen and (max-width: 420px) {
+                    height: 30rem;
+                }
+            }
+
+            .search-content {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 2;
+                width: 95%;
+
+                @media only screen and (min-width: 1600px) {
+                    width: 70%;
+                }
+
+                &-text {
+                    color: $color-white;
+                    .heading {
+                        font-size: 2.4rem;
+                        font-weight: bold;
+                    }
+                }
+                
+                &-select {
+                    display: flex;
+
+                    select {
+                        width: 18rem;
+                        height: 3.2rem;
+                        border: 1px solid #d9d9d9;
+                        border-radius: 2px;
+                        background-color: $color-white;
+                        color: rgba($color-black, 0.85);
+
+                        @media only screen and (max-width: 420px) {
+                            width: 100%;
+                        }
+                        @media only screen and (min-width: 1280px) and (max-width: 1320px) {
+                            width: 16rem;
+                        }
+                    }
+                    
+                    .select {
+                        width: 18rem;
+
+                        @media only screen and (max-width: 420px) {
+                            width: 100%;
+                        }
+                        @media only screen and (min-width: 1280px) and (max-width: 1320px) {
+                            width: 16rem;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     &_footer {

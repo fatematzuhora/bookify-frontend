@@ -100,6 +100,9 @@ const SignUp: React.FC = () => {
                 <Button type="primary" htmlType="submit">
                     Register
                 </Button>
+                <span className="px-2">
+                    Already have an account? <a href="/auth/signin">Login</a> Here!
+                </span>
             </Form.Item>
         </Form>
     )

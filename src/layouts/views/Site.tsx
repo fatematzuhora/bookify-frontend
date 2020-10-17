@@ -33,11 +33,11 @@ const SiteLayout = (props: any) => {
         <Layout className="site">
             <Layout.Header className="site_header">
                 <TopNav/>
-                <Search/>
             </Layout.Header>
 
-            <Layout.Content>
-                <h1>hi</h1>
+            <Layout.Content className="site_content">
+                <Search/>
+                
                 <Switch>
                     {getRoutes(routes)}
                     <Route path='*' exact={true} component={NotFound} />

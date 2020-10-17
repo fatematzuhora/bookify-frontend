@@ -47,6 +47,9 @@ const SignIn: React.FC = () => {
                 <Button type="primary" htmlType="submit">
                     Submit
                 </Button>
+                <span className="px-2">
+                    Don't have an account? <a href="/auth/signup">Register</a> Here!
+                </span>
             </Form.Item>
         </Form>
     )

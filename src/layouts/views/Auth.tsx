@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import routes from 'routes';
 import { NotFound } from 'layouts';
 import { Layout } from 'antd';
-import { Search, TopNav } from 'components/Site';
+import { TopNav } from 'components/Site';
 
 const getRoutes = (routes: any) => {
     const all_routes: any = [];
@@ -33,7 +33,6 @@ const AuthLayout = (props: any) => {
         <Layout className="site">
             <Layout.Header className="site_header">
                 <TopNav/>
-                <Search/>
             </Layout.Header>
 
             <Layout.Content className="auth">
