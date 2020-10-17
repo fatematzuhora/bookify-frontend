@@ -31,7 +31,7 @@
     "prefix:css": "postcss src/assets/css/styles.comp.css --use=autoprefixer -o src/assets/css/styles.prefix.css",
     "compress:css": "node-sass src/assets/css/styles.prefix.css src/assets/css/styles.css --output-style compressed",
     "build:css": "npm-run-all compile:less compress:less compile:sass prefix:css compress:css",
-    "watch:sass": "node-sass src/sass/main.scss src/assets/css/styles.css -w"
+    "watch:sass": "node-sass src/design/sass/main.scss src/assets/css/styles.css -w"
   },
   "eslintConfig": {
     "extends": "react-app"

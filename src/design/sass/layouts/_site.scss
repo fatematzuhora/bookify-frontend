@@ -1,0 +1,25 @@
+.site {
+    background-color: $color-white;
+
+    &_header {
+        background: $color-gray-1;
+
+        &-topnav {
+            .logo {
+                font-size: 2.4rem;
+                font-weight: 600;
+                color: $color-primary;
+            }
+
+            .menu-item {
+                background: $color-gray-1;
+            }
+        }
+
+    }
+
+    &_footer {
+        background: $color-gray-1;
+        text-align: center;
+    }
+}

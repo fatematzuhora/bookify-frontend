@@ -30,21 +30,22 @@ const getRoutes = (routes: any) => {
 
 const SiteLayout = (props: any) => {
     return (
-        <Layout>
-            <Layout.Header className="header">
+        <Layout className="site">
+            <Layout.Header className="site_header">
                 <TopNav/>
                 <Search/>
             </Layout.Header>
 
             <Layout.Content>
+                <h1>hi</h1>
                 <Switch>
                     {getRoutes(routes)}
                     <Route path='*' exact={true} component={NotFound} />
                 </Switch>
             </Layout.Content>
 
-            <Layout.Footer className="footer">
-                Bookify ©{new Date().getFullYear()}
+            <Layout.Footer className="site_footer">
+                Bookify © {new Date().getFullYear()} - Small ReactJS application for travel.
             </Layout.Footer>
         </Layout>
     )

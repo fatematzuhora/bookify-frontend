@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import routes from 'routes';
 import { NotFound } from 'layouts';
 import { Layout } from 'antd';
+import { Search, TopNav } from 'components/Site';
 
 const getRoutes = (routes: any) => {
     const all_routes: any = [];
@@ -29,13 +30,22 @@ const getRoutes = (routes: any) => {
 
 const AuthLayout = (props: any) => {
     return (
-        <Layout>
-            <Layout.Content>
+        <Layout className="site">
+            <Layout.Header className="site_header">
+                <TopNav/>
+                <Search/>
+            </Layout.Header>
+
+            <Layout.Content className="auth">
                 <Switch>
                     {getRoutes(routes)}
                     <Route path='*' exact={true} component={NotFound} />
                 </Switch>
             </Layout.Content>
+
+            <Layout.Footer className="site_footer">
+                Bookify © {new Date().getFullYear()} - Small ReactJS application for travel.
+            </Layout.Footer>
         </Layout>
     )
 }

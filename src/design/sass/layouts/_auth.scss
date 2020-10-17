@@ -1,0 +1,22 @@
+.auth {
+    background: $color-white;
+    min-height: 80vh;
+    position: relative;
+
+    &_form {
+        background: $color-gray-2;
+        box-shadow: .5rem .5rem $color-gray-1;
+        width: 50vw;
+        padding: 5rem 2rem;
+        position: absolute;
+        left: 25%;
+
+        &-signin {
+            top: 20%;
+        }
+
+        &-signup {
+            top: 5%;
+        }
+    }
+}

@@ -6,7 +6,8 @@
 @import 'components/dashboard/topnav';
 @import 'components/utils';
 // layouts
+@import 'layouts/auth';
 @import 'layouts/dashboard';
 @import 'layouts/notfound';
+@import 'layouts/site';
 // views
-@import 'pages/signin';
