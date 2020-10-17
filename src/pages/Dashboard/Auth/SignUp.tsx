@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Form, Input, Button, Checkbox } from 'antd';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Button, Checkbox, Form, Input, message, Result } from 'antd';
+import { register } from 'services/auth.service';
+import { RegisterDTO } from 'models/auth.model';
 
 const layout = {
     labelCol: { span: 6 },
@@ -9,10 +12,47 @@ const tailLayout = {
     wrapperCol: { offset: 6, span: 16 },
 };
 
-const SignUp: React.FC = () => {
+const SignUp = () => {
+    const onFinish = async (values: RegisterDTO) => {
+        const { name, username, email, password } = values;
+
+        register({name, username, email, password})
+        .then((res) => {
+            ReactDOM.render(
+                <Result
+                    status="success"
+                    title="Registration Successful!"
+                    subTitle="Please login to access your account!"
+                    extra={[
+                        <Button href="signin" type="primary" block>
+                            Sign In
+                        </Button>
+                    ]}
+                />,
+                document.getElementById('signup_form'),
+            );
+        })
+        .catch((err) => {
+            if (err.error !== '') {
+                message.error(err.message);
+            }
+        });
+    };
+
+    const onFinishFailed = (errorInfo: any) => {
+        console.log(errorInfo);
+    };
+
     return (
-        <Form {...layout} className="auth_form auth_form-signup">
+        <Form
+            {...layout}
+            className="auth_form auth_form-signup"
+            id="signup_form"
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
+        >
             <Form.Item
+                hasFeedback
                 label="Name"
                 name="name"
                 rules={[{

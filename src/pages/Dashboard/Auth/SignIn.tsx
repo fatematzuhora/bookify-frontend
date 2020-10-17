@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Form, Input, Button, Checkbox } from 'antd';
+import React from 'react';
+import { Button, Checkbox, Form, Input, message } from 'antd';
+import { login } from 'services/auth.service';
+import { LoginDTO } from 'models/auth.model';
 
 const layout = {
     labelCol: { span: 6 },
@@ -10,8 +12,31 @@ const tailLayout = {
 };
 
 const SignIn: React.FC = () => {
+    const onFinish = async (values: LoginDTO) => {
+        const { email, password } = values;
+
+        login({email, password})
+        .then((res) => {
+            message.success(`Success!`, .5);
+        })
+        .catch((err) => {
+            if (err.error !== '') {
+                message.error(err.message);
+            }
+        });
+    };
+
+    const onFinishFailed = (errorInfo: any) => {
+        console.log(errorInfo);
+    };
+
     return (
-        <Form {...layout} className="auth_form auth_form-signin">
+        <Form
+            {...layout}
+            className="auth_form auth_form-signin"
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
+        >
             <Form.Item
                 label="E-mail"
                 name="email"
