@@ -12,7 +12,7 @@ const App: React.FC = (props: any) => {
         <Route path="/dashboard" render={props => <DashboardLayout  {...props} />} />
 
         {(props.authData.is_logged_in) ? (
-          <Redirect from="/" to="/dashboard" />
+          <Redirect from="/" to="/dashboard/profile" />
         ): (
           <Redirect from="/" to="/site" />
         )}

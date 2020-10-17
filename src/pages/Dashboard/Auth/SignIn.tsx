@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 import { Button, Checkbox, Form, Input, message } from 'antd';
 import { login } from 'services/auth.service';
 import { LoginDTO } from 'models/auth.model';
@@ -25,7 +24,6 @@ const SignIn: React.FC = (props: any) => {
                 email,
                 res.token
             );
-            return <Redirect from="/" to="/dashboard" />;
         })
         .catch((err) => {
             if (err.error !== '') {

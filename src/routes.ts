@@ -1,13 +1,13 @@
 // site views
 import { LandingPage } from 'pages';
 // dashboard views
-import { AddProperty } from 'pages';
+import { AddProperty, Profile } from 'pages';
 // auth views
 import { SignIn, SignUp } from 'pages';
 
 let routes = [
     {
-        path: '/',
+        path: '',
         name: 'Home',
         icon: '',
         component: LandingPage,
@@ -16,10 +16,10 @@ let routes = [
         type: 'menu'
     },
     {
-        path: '/account',
+        path: '/profile',
         name: 'Account',
         icon: '',
-        component: '',
+        component: Profile,
         layout: '/dashboard',
         key: 2,
         type: 'menu'

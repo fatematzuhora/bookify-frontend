@@ -33,6 +33,7 @@ const getRoutes = (routes: any) => {
                 path={props.path}
                 component={props.component}
                 key={key}
+                exact={true}
             />
         )
     })

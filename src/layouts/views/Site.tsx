@@ -4,6 +4,7 @@ import routes from 'routes';
 import { NotFound } from 'layouts';
 import { Layout } from 'antd';
 import { Search, TopNav } from 'components/Site';
+import { connect } from 'react-redux';
 
 const getRoutes = (routes: any) => {
     const all_routes: any = [];
@@ -51,4 +52,8 @@ const SiteLayout = (props: any) => {
     )
 }
 
-export default SiteLayout;
+const mapStateToProps = (state: any) => ({
+    authData: state.auth,
+})
+  
+export default connect(mapStateToProps, null)(SiteLayout);

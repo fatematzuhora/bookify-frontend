@@ -31,7 +31,7 @@ const getRoutes = (routes: any) => {
 
 const AuthLayout = (props: any) => {
     if (props.authData.is_logged_in)
-        return <Redirect from="/" to="/dashboard" />;
+        return <Redirect from="/" to="/dashboard/profile" />;
 
     return (
         <Layout className="site">
