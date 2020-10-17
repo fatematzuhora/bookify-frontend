@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { AuthLayout, DashboardLayout, SiteLayout } from 'layouts';
+import { connect } from 'react-redux';
 
 const App: React.FC = (props: any) => {
   return (
@@ -10,10 +11,19 @@ const App: React.FC = (props: any) => {
         <Route path="/auth" render={props => <AuthLayout  {...props} />} />
         <Route path="/dashboard" render={props => <DashboardLayout  {...props} />} />
 
-        <Redirect from="/" to="/site" />
+        {(props.authData.is_logged_in) ? (
+          <Redirect from="/" to="/dashboard" />
+        ): (
+          <Redirect from="/" to="/site" />
+        )}
+        
       </Switch>
     </BrowserRouter>
   );
 }
 
-export default App;
+const mapStateToProps = (state: any) => ({
+  authData: state.auth,
+})
+
+export default connect(mapStateToProps, null)(App);

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import routes from 'routes';
 import { NotFound } from 'layouts';
 import { Layout } from 'antd';
 import { TopNav } from 'components/Site';
+import { connect } from 'react-redux';
 
 const getRoutes = (routes: any) => {
     const all_routes: any = [];
@@ -29,6 +30,9 @@ const getRoutes = (routes: any) => {
 };
 
 const AuthLayout = (props: any) => {
+    if (props.authData.is_logged_in)
+        return <Redirect from="/" to="/dashboard" />;
+
     return (
         <Layout className="site">
             <Layout.Header className="site_header">
@@ -49,4 +53,8 @@ const AuthLayout = (props: any) => {
     )
 }
 
-export default AuthLayout;
+const mapStateToProps = (state: any) => ({
+    authData: state.auth,
+})
+
+export default connect(mapStateToProps, null)(AuthLayout);

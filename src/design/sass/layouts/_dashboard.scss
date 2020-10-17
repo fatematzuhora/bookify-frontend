@@ -1,11 +1,35 @@
 .dashboard {
     min-height: 100vh;
+    background-color: $color-white;
 
-    .content {
-        margin: 7rem 5rem 0;
+    &_header {
+        background: $color-gray-2;
+
+        &-topnav {
+            .logo {
+                font-size: 2.4rem;
+                font-weight: 600;
+                color: $color-primary;
+            }
+        }
+
     }
 
-    .footer {
+    &_sider {
+        .menu {
+            background-color: $color-gray-1;
+            height: 100%;
+            border-right: 0;
+        }
+    }
+
+    &_content {
+        padding: 5rem;
+        background-color: $color-white;
+    }
+
+    &_footer {
+        background: $color-gray-2;
         text-align: center;
     }
 }

@@ -15,17 +15,8 @@ let routes = [
         type: 'menu'
     },
     {
-        path: '/',
+        path: '/account',
         name: 'Account',
-        icon: '',
-        component: '',
-        layout: '/dashboard',
-        key: 1,
-        type: 'menu'
-    },
-    {
-        path: '/property',
-        name: 'Property',
         icon: '',
         component: '',
         layout: '/dashboard',
@@ -33,12 +24,39 @@ let routes = [
         type: 'menu'
     },
     {
+        path: '/',
+        name: 'Property',
+        icon: '',
+        component: '',
+        layout: '/dashboard',
+        key: 'sub1',
+        type: 'submenu',
+        child: [
+            {
+                path: '/property/list',
+                name: 'My Properties',
+                icon: '',
+                component: '',
+                layout: '/dashboard',
+                key: 3
+            },
+            {
+                path: '/property/add',
+                name: 'Add Property',
+                icon: '',
+                component: '',
+                layout: '/dashboard',
+                key: 4
+            }
+        ]
+    },
+    {
         path: '/signup',
         name: 'SignUp',
         icon: '',
         component: SignUp,
         layout: '/auth',
-        key: 3,
+        key: 5,
         type: 'menu',
     },
     {
@@ -47,7 +65,7 @@ let routes = [
         icon: '',
         component: SignIn,
         layout: '/auth',
-        key: 4,
+        key: 6,
         type: 'menu',
     }
 ]

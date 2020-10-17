@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
+import { Provider } from 'react-redux';
+import configureStore from 'store';
+
 import App from 'App';
 
 // antd css
@@ -10,9 +13,9 @@ import 'assets/css/antd.css';
 import 'assets/css/styles.css';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={configureStore}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 

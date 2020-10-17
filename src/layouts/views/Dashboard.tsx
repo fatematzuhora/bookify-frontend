@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import routes from 'routes';
 import { SideNav, TopNav } from 'components/Dashboard';
 import { NotFound } from 'layouts';
 import { Layout } from 'antd';
+import { connect } from 'react-redux';
 
 const getRoutes = (routes: any) => {
     const all_routes: any = [];
@@ -38,33 +39,42 @@ const getRoutes = (routes: any) => {
 };
 
 const DashboardLayout = (props: any) => {
+    if (!props.authData.is_logged_in)
+        return <Redirect from="/" to="/auth/signin" />;
+
     return (
         <Layout className="dashboard">
-            <SideNav
-                {...props}
-                routes={routes}
-                logo={{
-                    innerLink: '/dashboard/',
-                    imgAlt: '...'
-                }}
-            />
+            <Layout.Header className="dashboard_header">
+                <TopNav/>
+            </Layout.Header>
 
             <Layout>
-                <TopNav/>
-
-                <Layout.Content className="content">
+                <SideNav
+                    {...props}
+                    routes={routes}
+                    logo={{
+                        innerLink: '/dashboard/',
+                        imgAlt: '...'
+                    }}
+                />
+                
+                <Layout.Content className="dashboard_content">
                     <Switch>
                         {getRoutes(routes)}
                         <Route path='*' exact={true} component={NotFound} />
                     </Switch>
                 </Layout.Content>
-
-                <Layout.Footer className="footer">
-                    Bookify ©{new Date().getFullYear()}
-                </Layout.Footer>
             </Layout>
+
+            <Layout.Footer className="dashboard_footer">
+                Bookify © {new Date().getFullYear()}
+            </Layout.Footer>
         </Layout>
     )
 }
 
-export default DashboardLayout;
+const mapStateToProps = (state: any) => ({
+    authData: state.auth,
+})
+
+export default connect(mapStateToProps, null)(DashboardLayout);

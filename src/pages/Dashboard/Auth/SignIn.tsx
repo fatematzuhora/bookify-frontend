@@ -1,7 +1,10 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import { Button, Checkbox, Form, Input, message } from 'antd';
 import { login } from 'services/auth.service';
 import { LoginDTO } from 'models/auth.model';
+import { logIn } from 'store/actions/index';
+import { connect } from 'react-redux';
 
 const layout = {
     labelCol: { span: 6 },
@@ -11,13 +14,18 @@ const tailLayout = {
     wrapperCol: { offset: 6, span: 16 },
 };
 
-const SignIn: React.FC = () => {
+const SignIn: React.FC = (props: any) => {
     const onFinish = async (values: LoginDTO) => {
         const { email, password } = values;
 
         login({email, password})
         .then((res) => {
-            message.success(`Success!`, .5);
+            message.success(`Success!`);
+            props.logInAction(
+                email,
+                res.token
+            );
+            return <Redirect from="/" to="/dashboard" />;
         })
         .catch((err) => {
             if (err.error !== '') {
@@ -80,4 +88,14 @@ const SignIn: React.FC = () => {
     )
 }
 
-export default SignIn;
+const mapStateToProps = (state: any) => ({
+    authData: state.auth,
+})
+
+const mapDispatchToProps = (dispatch: any) => ({
+    logInAction: (email: string, token: string) => {
+        dispatch(logIn(email, token));
+    }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
