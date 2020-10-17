@@ -1,6 +1,7 @@
 // site views
 import { LandingPage } from 'pages';
 // dashboard views
+import { AddProperty } from 'pages';
 // auth views
 import { SignIn, SignUp } from 'pages';
 
@@ -44,7 +45,7 @@ let routes = [
                 path: '/property/add',
                 name: 'Add Property',
                 icon: '',
-                component: '',
+                component: AddProperty,
                 layout: '/dashboard',
                 key: 4
             }
