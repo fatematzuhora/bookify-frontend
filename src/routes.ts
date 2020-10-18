@@ -1,5 +1,5 @@
 // site views
-import { LandingPage } from 'pages';
+import { LandingPage, SearchPage } from 'pages';
 // dashboard views
 import { PropertyForm, PropertyList, Profile } from 'pages';
 // auth views
@@ -68,7 +68,16 @@ let routes = [
         layout: '/auth',
         key: 6,
         type: 'menu',
-    }
+    },
+    {
+        path: '/search',
+        name: 'Search',
+        icon: '',
+        component: SearchPage,
+        layout: '/site',
+        key: 7,
+        type: 'menu'
+    },
 ]
 
 export default routes;

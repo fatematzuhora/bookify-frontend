@@ -1,5 +1,6 @@
 // site
 export { default as LandingPage } from 'pages/Site/Landing';
+export { default as SearchPage } from 'pages/Site/Search';
 // auth
 export { default as SignIn } from 'pages/Dashboard/Auth/SignIn';
 export { default as SignUp } from 'pages/Dashboard/Auth/SignUp';

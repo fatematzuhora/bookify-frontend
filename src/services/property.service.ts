@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CreatePropertyDTO } from 'models/property.model';
+import { CreatePropertyDTO, SearchPropertyDTO } from 'models/property.model';
 import { BASE_URL } from 'config';
 
 export const createProperty = async (
@@ -27,6 +27,21 @@ export const getMyProperties = async (
                 'Authorization': `Bearer ${token}` 
             }
         });
+        return data;
+    } catch (err) {
+        throw (err.response.data);
+    }
+}
+
+export const searchProperties = async (
+    data: SearchPropertyDTO
+) => {
+    const { type, country, city } = data;
+    
+    try {
+        const { data } = await axios.get(
+            `${BASE_URL}/property/search?type=${type}&country=${country}&city=${city}`
+        );
         return data;
     } catch (err) {
         throw (err.response.data);

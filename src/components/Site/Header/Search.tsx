@@ -1,10 +1,32 @@
 import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
-import { Button, Col, DatePicker, Row, Select, Space } from 'antd';
+import { Button, Col, DatePicker, message, Row, Select, Space } from 'antd';
+import { searchProperties } from 'services/property.service';
+import { SearchPropertyDTO } from 'models/property.model';
+import { SearchPage } from 'pages';
+
+const onSearch = (
+    data: SearchPropertyDTO
+) => {
+    searchProperties(data)
+    .then((res) => {
+        ReactDOM.render (
+            <SearchPage properties={res.properties}/>,
+            document.getElementById('site_content')
+        )
+    })
+    .catch((err) => {
+        if (err.error !== '') {
+            message.error(err.message);
+        }
+    });
+}
 
 const Search: React.FC = () => {
     const [country, setCountry] = useState<string>('');
-    const [region, setRegion] = useState<string>('');
+    const [city, setCity] = useState<string>('');
+    const [type, setType] = useState<string>('');
 
     return (
         <Row className="my-3">
@@ -25,12 +47,12 @@ const Search: React.FC = () => {
                         <Col md={21} sm={24}>
                             <CountryDropdown
                                 value={country}
-                                onChange={(val) => setCountry(val)}
+                                onChange={(val: string) => setCountry(val)}
                             />
                             <RegionDropdown
                                 country={country}
-                                value={region}
-                                onChange={(val) => setRegion(val)}
+                                value={city}
+                                onChange={(val: string) => setCity(val)}
                             />
                             
                             <Space direction="vertical" size={12}>
@@ -42,6 +64,7 @@ const Search: React.FC = () => {
                                 className="select"
                                 placeholder="Select property type"
                                 optionFilterProp="children"
+                                onChange={(val: string) => setType(val)}
                             >
                                 <Select.Option value="single">Single</Select.Option>
                                 <Select.Option value="double">Double</Select.Option>
@@ -49,7 +72,12 @@ const Search: React.FC = () => {
                         </Col>
 
                         <Col md={3} sm={24}>
-                            <Button block type="primary" htmlType="submit">
+                            <Button
+                                block
+                                type="primary"
+                                htmlType="submit"
+                                onClick={() => onSearch({type, country, city})}
+                            >
                                 Search
                             </Button>
                         </Col>

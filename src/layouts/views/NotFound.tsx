@@ -1,10 +1,14 @@
 import React from 'react';
+import { Button, Result, Row } from 'antd';
 
 const NotFound: React.FC = () => {
     return (
-        <div>
-            Nothing Found!
-        </div>
+        <Result
+            status="404"
+            title="404"
+            subTitle="Sorry, the page you visited does not exist."
+            extra={<Button type="primary" href="/site">Back Home</Button>}
+        />
     )
 }
 

@@ -13,7 +13,7 @@ const LandingPage: React.FC = () => {
                     {
                         Object.values(properties).map((property, index) => {
                             return (
-                                <Col sm={24} md={8}>
+                                <Col sm={24} md={8} key={index}>
                                     <LandingPageCard property={property} />
                                 </Col>
                             )

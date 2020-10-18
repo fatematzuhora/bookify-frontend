@@ -39,10 +39,12 @@ const SiteLayout = (props: any) => {
             <Layout.Content className="site_content">
                 <Search/>
                 
-                <Switch>
-                    {getRoutes(routes)}
-                    <Route path='*' exact={true} component={NotFound} />
-                </Switch>
+                <div id="site_content">
+                    <Switch>
+                        {getRoutes(routes)}
+                        <Route path='*' exact={true} component={NotFound} />
+                    </Switch>
+                </div>
             </Layout.Content>
 
             <Layout.Footer className="site_footer">
