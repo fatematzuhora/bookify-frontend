@@ -6,6 +6,8 @@ import {
 } from 'antd';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 import { BreadcrumbNav } from 'components/Dashboard';
+import { createProperty } from 'services/property.service';
+import { CreatePropertyDTO } from 'models/property.model';
 
 const layout = {
     labelCol: { span: 4 },
@@ -19,7 +21,34 @@ const AddProperty = () => {
     const [country, setCountry] = useState<string>('');
     const [region, setRegion] = useState<string>('');
 
-    const onFinish = async (values: any) => {
+    const onFinish = async (values: CreatePropertyDTO) => {
+        const { title, description, price, type, country, city } = values;
+
+        createProperty({title, description, price, type, country, city})
+        .then((res) => {
+            ReactDOM.render(
+                <Result
+                    status="success"
+                    title="Property Added Successfully!"
+                    subTitle="You can add more property or browser the list!"
+                    extra={[
+                        <Button href="list" type="primary">
+                            Property List
+                        </Button>,
+                        <Button href="add">
+                            Add Property
+                        </Button>
+                    ]}
+                />,
+                document.getElementById('property_adding_form'),
+            );
+        })
+        .catch((err) => {
+            if (err.error !== '') {
+                message.error(err.message);
+            }
+        });
+
     };
 
     const onFinishFailed = (errorInfo: any) => {
@@ -34,6 +63,7 @@ const AddProperty = () => {
                 {...layout}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
+                id="property_adding_form"
             >
                 <Form.Item
                     label="Title"
