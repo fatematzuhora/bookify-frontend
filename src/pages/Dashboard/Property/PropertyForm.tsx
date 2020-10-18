@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import {
     Button, DatePicker, Form, Input, InputNumber,
@@ -8,6 +8,7 @@ import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 import { BreadcrumbNav } from 'components/Dashboard';
 import { createProperty } from 'services/property.service';
 import { CreatePropertyDTO } from 'models/property.model';
+import { connect } from 'react-redux';
 
 const layout = {
     labelCol: { span: 4 },
@@ -17,16 +18,19 @@ const tailLayout = {
     wrapperCol: { offset: 4, span: 18 },
 };
 
-const AddProperty = () => {
+const PropertyForm = (props: any) => {
     const [country, setCountry] = useState<string>('');
     const [region, setRegion] = useState<string>('');
 
     const onFinish = async (values: CreatePropertyDTO) => {
         const { title, description, price, type, country, city } = values;
 
-        createProperty({title, description, price, type, country, city})
+        createProperty(
+            {title, description, price, type, country, city},
+            props.authData.auth_token
+        )
         .then((res) => {
-            ReactDOM.render(
+            ReactDOM.render (
                 <Result
                     status="success"
                     title="Property Added Successfully!"
@@ -166,4 +170,8 @@ const AddProperty = () => {
     )
 }
 
-export default AddProperty;
+const mapStateToProps = (state: any) => ({
+    authData: state.auth,
+})
+
+export default connect(mapStateToProps, null)(PropertyForm);

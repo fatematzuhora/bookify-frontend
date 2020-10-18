@@ -1,7 +1,7 @@
 // site views
 import { LandingPage } from 'pages';
 // dashboard views
-import { AddProperty, Profile } from 'pages';
+import { PropertyForm, PropertyList, Profile } from 'pages';
 // auth views
 import { SignIn, SignUp } from 'pages';
 
@@ -37,7 +37,7 @@ let routes = [
                 path: '/property/list',
                 name: 'My Properties',
                 icon: '',
-                component: '',
+                component: PropertyList,
                 layout: '/dashboard',
                 key: 3
             },
@@ -45,7 +45,7 @@ let routes = [
                 path: '/property/add',
                 name: 'Add Property',
                 icon: '',
-                component: AddProperty,
+                component: PropertyForm,
                 layout: '/dashboard',
                 key: 4
             }

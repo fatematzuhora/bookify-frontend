@@ -26,4 +26,4 @@ npm start
 ```
 
 ### Note
-To communicate with the backend setup [bookify-backend](https://github.com/fatematzuhora/bookify-backend) project
+To communicate with the backend, first setup [bookify-backend](https://github.com/fatematzuhora/bookify-backend) project.
