@@ -20,6 +20,19 @@ npm i
 ```
 npm run build:css
 ```
+* Create an environment file:
+```
+touch .env
+```
+* Open environment file and edit configuration variables:
+```
+# .env file
+NODE_PATH=./src
+ROOT_DIR=./
+
+NODE_ENV=dev
+API_BASE_URL=http://localhost:8080/api
+```
 * Run Project:
 ```
 npm start
