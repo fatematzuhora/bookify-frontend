@@ -24,7 +24,7 @@ npm run build:css
 ```
 touch .env
 ```
-* Open environment file and edit configuration variables:
+* Open environment file and copy-paste the following lines as configuration variables:
 ```
 # .env file
 NODE_PATH=./src
