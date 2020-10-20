@@ -3,7 +3,7 @@ A small ReactJS application for a travel company that will allow the user to pub
 
 The Front-End application is build using the [ReactJS](https://reactjs.org/), [TypeScript](https://www.typescriptlang.org/), and [Redux](https://redux.js.org/). [Antd](https://ant.design/) is using to develop UI.
 
-### Quick Start
+## Quick Start
 * Clone the repo:
 ```
 git clone https://github.com/fatematzuhora/bookify-frontend.git
@@ -20,19 +20,6 @@ npm i
 ```
 npm run build:css
 ```
-* Create an environment file:
-```
-touch .env
-```
-* Open environment file and copy-paste the following lines as configuration variables:
-```
-# .env file
-NODE_PATH=./src
-ROOT_DIR=./
-
-NODE_ENV=dev
-API_BASE_URL=http://localhost:8080/api
-```
 * Run Project:
 ```
 npm start
@@ -40,3 +27,27 @@ npm start
 
 ### Note
 To communicate with the backend, first setup [bookify-backend](https://github.com/fatematzuhora/bookify-backend) project.
+
+## Start with Docker
+If you have docker installed on your local machine you just need to go a few steps with Docker to run the project.
+
+* Step One: Build a `docker image`:
+```
+docker build -t bookify-frontend .
+```
+
+If you are using Linux distro and facing any permission error just insert `sudo` at beginning of the command. For example:
+```
+sudo docker build -t bookify-frontend .
+```
+
+Now you can see the following message on your terminal:
+
+**Successfully tagged bookify-frontend:latest**
+
+This means the docker image has built successfully.
+
+* Step Two: Run the docker image:
+```
+docker run bookify-frontend
+```

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Result, Row } from 'antd';
+import { Button, Result } from 'antd';
 
 const NotFound: React.FC = () => {
     return (
