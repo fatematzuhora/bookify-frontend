@@ -3,7 +3,10 @@ A small ReactJS application for a travel company that will allow the user to pub
 
 The Front-End application is build using the [ReactJS](https://reactjs.org/), [TypeScript](https://www.typescriptlang.org/), and [Redux](https://redux.js.org/). [Antd](https://ant.design/) is using to develop UI.
 
-## Quick Start
+### Note
+To communicate with the backend, first setup [bookify-backend](https://github.com/fatematzuhora/bookify-backend) project.
+
+## Quick Start (Option #1)
 * Clone the repo:
 ```
 git clone https://github.com/fatematzuhora/bookify-frontend.git
@@ -25,10 +28,7 @@ npm run build:css
 npm start
 ```
 
-### Note
-To communicate with the backend, first setup [bookify-backend](https://github.com/fatematzuhora/bookify-backend) project.
-
-## Start with Docker
+## Start with Docker (Option #2)
 If you have docker installed on your local machine you just need to go a few steps with Docker to run the project.
 
 * Step One: Build a `docker image`:
@@ -49,5 +49,7 @@ This means the docker image has built successfully.
 
 * Step Two: Run the docker image:
 ```
-docker run bookify-frontend
+docker run -it -p 3000:3000 bookify-frontend
 ```
+
+Now go to the browser and browse `http://localhost:3000`
