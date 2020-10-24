@@ -121,7 +121,7 @@ const PropertyForm = (props: any) => {
                 </Form.Item>
 
                 <Form.Item
-                    label="Country"
+                    label="City / Region"
                     name="city"
                     rules={[{ required: true }]}
                     className="search-content-select"

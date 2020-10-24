@@ -1,7 +1,16 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import rootReducer from 'store/reducers/rootReducer';
 import { ENV } from 'config';
+
+const persistConfigs = {
+    key: 'reducer',
+    storage: storage,
+};
+
+const persistedReducer = persistReducer(persistConfigs, rootReducer);
 
 interface Window {
     __REDUX_DEVTOOLS_EXTENSION__?: any;
@@ -15,5 +24,5 @@ if (ENV === 'dev') {
     enhancers.push(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 }
 
-const configureStore = createStore( rootReducer, compose(...enhancers))
-export default configureStore;
+export const store = createStore( persistedReducer, compose(...enhancers));
+export const persistedStore = persistStore(store);
